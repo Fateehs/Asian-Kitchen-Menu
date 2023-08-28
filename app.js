@@ -73,9 +73,21 @@ const menu = [
   },
 ];
 
+// Menu Filters
+const koreaMenu = menu.filter((item) => {
+  return item.category === "Korea";
+});
+const japanMenu = menu.filter((item) => {
+  return item.category === "Japan";
+});
+const chinaMenu = menu.filter((item) => {
+  return item.category === "China";
+});
+
 // Set categories
 const categories = ["All", "Korea", "China", "Japan"];
-const filterBtns = document.querySelector(".btn-container");
+const filterBtnContainer = document.querySelector(".btn-container");
+const filterBtns = document.querySelectorAll("button");
 const menuItems = document.querySelector(".section-center");
 
 menu.forEach((element) => {
@@ -98,14 +110,14 @@ categories.forEach((category) => {
   const button = document.createElement("button");
   button.textContent = category;
   button.id = category.toLocaleLowerCase();
-  filterBtns.appendChild(button);
+  filterBtnContainer.appendChild(button);
 });
 
-let category = filterBtns.childNodes;
-category.forEach((item) => {
-  item.addEventListener("click", () => {
-    if (item.id == "all") {
-      result = menu;
+filterBtns.forEach((button) => {
+  button.addEventListener("click", () => {
+    if(button.id === "korea")
+    {
+      console.log("korea")
     }
-  });
-});
+  })
+})

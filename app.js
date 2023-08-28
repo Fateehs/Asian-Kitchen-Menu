@@ -113,11 +113,11 @@ categories.forEach((category) => {
   filterBtnContainer.appendChild(button);
 });
 
-filterBtns.forEach((button) => {
+filterBtnContainer.childNodes.forEach((button) => {
   button.addEventListener("click", () => {
-    if(button.id === "korea")
-    {
-      console.log("korea")
+    if (button.id == "korea") {
+      console.log(button.id)
+      return menu.filter(item => item.category === "Korea")
     }
-  })
-})
+  });
+});

@@ -90,21 +90,6 @@ const filterBtnContainer = document.querySelector(".btn-container");
 const filterBtns = document.querySelectorAll("button");
 const menuItems = document.querySelector(".section-center");
 
-menu.forEach((element) => {
-  menuItems.innerHTML += `<div class="menu-items col-lg-6 col-sm-12">
-  <img src=${element.img} class="photo">
-  <div class="menu-info">
-      <div class="menu-title">
-      <h4>${element.title}</h4>
-      <h4 class="price">${element.price}</h4>
-      </div>
-      <div class="menu-text">
-      ${element.desc}
-      </div>
-  </div>
-  </div>`;
-});
-
 // Create category filter buttons
 categories.forEach((category) => {
   const button = document.createElement("button");
@@ -113,11 +98,54 @@ categories.forEach((category) => {
   filterBtnContainer.appendChild(button);
 });
 
-filterBtnContainer.childNodes.forEach((button) => {
+// filterBtnContainer.childNodes.forEach((button) => {
+//   button.addEventListener("click", () => {
+//     if (button.id == "korea") {
+//       let filteredMenu = menu.filter(item => item.category === "Korea")
+//       return filteredMenu
+// //     }
+//   });
+// });
+
+// Kategori filtreleme işlevi
+function filterCategory(category) {
+  const filteredMenu = menu.filter(item => item.category === category);
+  return filteredMenu;
+}
+
+// Kategori düğmelerine tıklama olayları ekleme
+filterBtnContainer.childNodes.forEach(button => {
   button.addEventListener("click", () => {
-    if (button.id == "korea") {
-      console.log(button.id)
-      return menu.filter(item => item.category === "Korea")
+    const category = button.textContent;
+    if (category === "All") {
+      // Tüm öğeleri göstermek için
+      displayMenuItems(menu);
+    } else {
+      // Belirli bir kategoriye ait öğeleri göstermek için
+      const filteredMenu = filterCategory(category);
+      displayMenuItems(filteredMenu);
     }
   });
 });
+
+// Menü öğelerini ekranda görüntüleme
+function displayMenuItems(menuList) {
+  menuItems.innerHTML = "";
+  menuList.forEach(element => {
+    menuItems.innerHTML += `<div class="menu-items col-lg-6 col-sm-12">
+      <img src=${element.img} class="photo">
+      <div class="menu-info">
+          <div class="menu-title">
+          <h4>${element.title}</h4>
+          <h4 class="price">${element.price}</h4>
+          </div>
+          <div class="menu-text">
+          ${element.desc}
+          </div>
+      </div>
+      </div>`;
+  });
+}
+
+// Sayfa yüklenirken tüm menü öğelerini gösterme
+displayMenuItems(menu);

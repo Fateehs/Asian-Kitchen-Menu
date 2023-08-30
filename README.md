@@ -13,7 +13,7 @@ This project is designed to display an Asian cuisine menu.
 * You will need to use methods such as map and reduce within the site. :green_circle:
 
 ## Demo
-![](https://github.com/Fateehs/Rock-Paper-Scissors/blob/main/assets/rockpaperscissors.gif)
+![](https://github.com/Fateehs/Asian-Kitchen-Menu/blob/main/assets/Asian%20Kitchen's%20Menu.gif)
 
 
 #### ATTENTION
